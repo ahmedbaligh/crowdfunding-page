@@ -1,0 +1,9 @@
+export { default as siteLogo } from './logo.svg';
+export { default as mastercraftLogo } from './logo-mastercraft.svg';
+export { default as bookmarkIcon } from './icon-bookmark.svg';
+export { default as checkIcon } from './icon-check.svg';
+export { default as hamburgerIcon } from './icon-hamburger.svg';
+export { default as menuCloseIcon } from './icon-close-menu.svg';
+export { default as modalCloseIcon } from './icon-close-modal.svg';
+export { default as heroDesktop } from './image-hero-desktop.jpg';
+export { default as heroMobile } from './image-hero-mobile.jpg';

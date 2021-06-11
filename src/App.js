@@ -1,11 +1,14 @@
 import React from 'react';
 
-function App() {
+// import './stylesheets/App.scss';
+import { Header } from './components';
+
+const App = () => {
   return (
-    <div className="App">
-      Hello World
+    <div>
+      <Header />
     </div>
   );
-}
+};
 
 export default App;
