@@ -1,0 +1,251 @@
+@use './variables' as *;
+
+.ui.button {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.7px;
+  border-radius: 30px;
+  background-color: $moderate-cyan;
+  color: #fff;
+
+  &:is(:hover, :focus) {
+    background-color: $dark-cyan;
+    color: #fff;
+  }
+}
+
+.wrap {
+  background-color: #fff;
+  border: 1px solid lighten($divider-color, 7);
+  padding: 42px 50px 45px;
+  border-radius: 12px;
+}
+
+main {
+  position: relative;
+  top: -92px;
+}
+
+.monitor-wrapper {
+  width: clamp(700px, 65%, 1000px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+@media (max-width: 767px) {
+  .monitor-wrapper {
+    width: 95%;
+  }
+}
+
+.monitor-header {
+  text-align: center;
+  position: relative;
+  padding-top: 57px;
+
+  .monitor-logo {
+    position: absolute;
+    top: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+  }
+
+  h1 {
+    font-family: inherit;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+
+    .back {
+      flex: 203px 0 1;
+      height: 57px;
+      font-size: 14.7px;
+    }
+
+    .bookmark {
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 700;
+      background-color: lighten($dark-gray, 47);
+      color: $dark-gray;
+      flex: 170px 0;
+      padding: 0;
+      padding-right: 10px;
+
+      &:hover .bookmark-icon {
+        transition: opacity 0.1s ease;
+        opacity: 0.6;
+      }
+
+      .bookmark-icon {
+        transition: opacity 0.1s ease;
+        width: 55px;
+        margin-right: 17px;
+      }
+    }
+  }
+}
+
+.watcher {
+  .stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 33px;
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      flex: calc(100% / 3) 0;
+
+      &.backers {
+        border: 1px solid;
+        border-color: transparent $divider-color;
+      }
+
+      .num {
+        font-size: 2.3rem;
+        font-weight: 700;
+      }
+
+      .description {
+        margin-top: 8px;
+        font-size: 15px;
+        color: $dark-gray;
+      }
+    }
+  }
+
+  .backed-progress {
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: lighten($dark-gray, 45);
+
+    &:last-child {
+      margin: 0;
+    }
+
+    .bar {
+      background-color: $moderate-cyan;
+    }
+  }
+}
+
+.project {
+  h2 {
+    font: 700 1.4rem $body-font-family;
+  }
+
+  p.about {
+    margin: 35px 0 30px;
+    line-height: 1.9;
+  }
+
+  .stands {
+    margin-top: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrap {
+    padding: 27px 22px 38px;
+  }
+
+  main {
+    top: -59px;
+  }
+
+  .monitor-header {
+    padding-top: 52px;
+
+    h1 {
+      font-size: 20px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .actions {
+      margin-top: 23px;
+
+      .back {
+        flex: 77% 0 1;
+      }
+
+      .bookmark {
+        flex: auto 0 1;
+        padding: 0;
+
+        .bookmark-icon {
+          margin: 0;
+        }
+
+        .bookmark-text {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .watcher {
+    .stats {
+      flex-direction: column;
+      gap: 50px;
+
+      .stat {
+        &.backers {
+          border: none;
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 1px solid;
+            border-color: $divider-color transparent;
+            width: 28%;
+          }
+        }
+
+        .description {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .project {
+    padding-top: 30px;
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    p.about {
+      line-height: 1.72;
+      margin: 25px 0 22px;
+    }
+
+    .stands {
+      margin-top: 30px;
+      gap: 23px;
+    }
+  }
+}

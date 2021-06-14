@@ -1,0 +1,98 @@
+@use './variables' as *;
+
+@mixin inactive($color, $amount: 40) {
+  color: darken($color, $amount);
+}
+
+.stand {
+  border: 1px solid $divider-color;
+  border-radius: 10px;
+  padding: 35px 30px;
+
+  .stand-header {
+    display: flex;
+    justify-content: space-between;
+
+    .stand-name {
+      font: 700 1.3rem $body-font-family;
+    }
+
+    .pledge-min {
+      color: $moderate-cyan;
+      font-weight: 500;
+      font-size: 15px;
+    }
+  }
+
+  .stand-info {
+    margin: 20px 0 28px;
+  }
+
+  .stand-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .pledges-left {
+      .left-num {
+        font-size: 2.3rem;
+        font-weight: 700;
+      }
+
+      .left-text {
+        color: $dark-gray;
+        vertical-align: super;
+        padding-left: 2px;
+        font-size: 15px;
+      }
+    }
+
+    .select-button {
+      margin: 0;
+      margin-top: -1px;
+      height: 48px;
+      width: 157px;
+    }
+  }
+
+  &.inactive {
+    opacity: 0.5;
+
+    .stand-actions {
+      .select-button {
+        background-color: $black;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .stand {
+    padding: 24px;
+
+    .stand-header {
+      flex-direction: column;
+      gap: 3px;
+
+      .stand-name {
+        font-size: 1rem;
+      }
+
+      .pledge-min {
+        font-size: 14px;
+      }
+    }
+
+    .stand-info {
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .stand-actions {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 25px;
+    }
+  }
+}

@@ -8,7 +8,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header>
+    <header className="page-header">
       <Container className={`header-wrapper ${isOpen ? 'open' : ''}`}>
         <div className="site-logo">
           <img src={siteLogo} alt="site logo" width="140" height="25" />

@@ -1,6 +1,6 @@
-@use 'index' as *;
+@use './variables' as *;
 
-header {
+.page-header {
   background: url(../assets/image-hero-desktop.jpg) no-repeat center
     center/cover;
   min-height: 400px;
@@ -54,7 +54,7 @@ header {
 }
 
 @media (max-width: 767px) {
-  header {
+  .page-header {
     background: url(../assets/image-hero-mobile.jpg) no-repeat center
       center/cover;
     padding: 25px 0;

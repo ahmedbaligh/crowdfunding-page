@@ -1,11 +1,4 @@
-// Colors
-$moderate-cyan: hsl(176, 50%, 47%);
-$dark-cyan: hsl(176, 72%, 28%);
-$black: hsl(0, 0%, 0%);
-$dark-gray: hsl(0, 0%, 48%);
-
-$body-font-size: 16px;
-$body-font-family: 'Commissioner', sans-serif;
+@use './variables' as *;
 
 *,
 *::before,
@@ -42,6 +35,17 @@ a {
 
 :focus {
   outline: none;
+}
+
+p {
+  color: $dark-gray;
+  line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+  p {
+    font-size: 14px;
+  }
 }
 
 body {
