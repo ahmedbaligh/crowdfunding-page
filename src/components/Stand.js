@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'semantic-ui-react';
 
 import '../stylesheets/Stand.scss';
 import { formatCurrency } from '../utils/helps';
 
 const Stand = ({ stand: { name, min, info, left }, backProject }) => {
-  const [active, setActive] = useState(left ? true : false);
+  const [inactive, setInactive] = useState(false);
+
+  useEffect(() => {
+    if (left === 0) setInactive(true);
+  }, [left]);
 
   return (
-    <div className={`stand ${active ? '' : 'inactive'}`}>
+    <div className={`stand ${inactive && 'inactive'}`}>
       <header className="stand-header">
         <h3 className="stand-name">{name}</h3>
         <p className="pledge-min">Pledge {formatCurrency(min)} or more</p>
@@ -23,11 +27,11 @@ const Stand = ({ stand: { name, min, info, left }, backProject }) => {
         </div>
 
         <Button
-          disabled={!active}
+          disabled={inactive}
           className="select-button"
           onClick={backProject}
         >
-          {active ? 'Select Reward' : 'Out of stock'}
+          {!inactive ? 'Select Reward' : 'Out of stock'}
         </Button>
       </div>
     </div>

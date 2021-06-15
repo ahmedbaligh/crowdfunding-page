@@ -1,0 +1,41 @@
+@use './variables' as *;
+
+.modal.ui {
+  border-radius: 8px;
+  overflow: hidden;
+
+  .modal-wrapper {
+    padding: 3.5rem 3rem;
+    padding-bottom: 0;
+  }
+
+  .close.icon {
+    top: 1rem;
+    right: 1rem;
+    color: $dark-gray;
+  }
+
+  .header {
+    border: none;
+
+    .title {
+      font: 700 1.8rem $body-font-family;
+    }
+
+    .description {
+      font: 500 $body-font-size $body-font-family;
+      margin: 20px 0;
+    }
+  }
+
+  .content {
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+  }
+}

@@ -1,0 +1,178 @@
+@use './variables' as *;
+
+$radio-button-size: 26px;
+
+.pledge.stand {
+  padding: 35px 0 0;
+
+  .stand-main {
+    display: flex;
+    gap: 15px;
+    padding: 0 25px;
+
+    /* Make a custom radio button
+  * Attribution to W3schools
+  * https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+  */
+    .stand-select {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      font-size: 22px;
+      user-select: none;
+
+      /* Hide the browser's default radio button */
+      input {
+        position: absolute;
+        opacity: 0;
+        left: 0;
+        width: $radio-button-size;
+        height: $radio-button-size;
+        z-index: 100;
+
+        &:enabled {
+          cursor: pointer;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        &:checked ~ .checkmark {
+          background-color: #fff;
+
+          /* Show the indicator (dot/circle) when checked */
+          &::after {
+            display: block;
+          }
+        }
+      }
+
+      /* Create a custom radio button */
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: $radio-button-size;
+        width: $radio-button-size;
+        background-color: #fff;
+        border-radius: 50%;
+        border: 1px solid $divider-color;
+        transition: 0.3s linear;
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        &:after {
+          content: '';
+          position: absolute;
+          display: none;
+
+          /* Style the indicator (dot/circle) */
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: $moderate-cyan;
+        }
+      }
+
+      /* On mouse-over, add a grey background color */
+      &:hover input:enabled ~ .checkmark {
+        border-color: $moderate-cyan;
+      }
+    }
+
+    .stand-main-info {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+
+      .stand-header {
+        display: flex;
+        gap: 20px;
+
+        .stand-name {
+          font-size: $body-font-size;
+        }
+
+        .pledge-min {
+          line-height: normal;
+        }
+      }
+
+      .pledges-left {
+        line-height: normal;
+
+        .left-num {
+          font-size: 1.3rem;
+        }
+
+        .left-text {
+          vertical-align: baseline;
+          padding-left: 3px;
+        }
+      }
+
+      .stand-info {
+        margin: 15px 0 20px;
+        font-size: $body-font-size - 1;
+      }
+    }
+  }
+
+  .pledging {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid $divider-color;
+    padding: 0 20px;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transition: padding 0.3s ease-out, opacity 0.5s linear;
+
+    label {
+    }
+
+    .fields {
+      margin: 0;
+
+      .field {
+        width: 100px;
+
+        .ui.input input {
+          border-radius: 20px;
+          caret-color: $moderate-cyan;
+
+          /* Chrome, Safari, Edge, Opera */
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+
+          /* Firefox */
+          &[type='number'] {
+            -moz-appearance: textfield;
+          }
+        }
+
+        .ui.button {
+          line-height: normal;
+        }
+      }
+    }
+  }
+
+  &.checked {
+    border: 2px solid $dark-cyan;
+
+    .pledging {
+      visibility: visible;
+      opacity: 1;
+      height: auto;
+      padding-top: 25px;
+      padding-bottom: 25px;
+      transition: padding 0.3s ease-in, opacity 0.5s linear;
+    }
+  }
+}

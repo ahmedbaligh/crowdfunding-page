@@ -7,3 +7,6 @@ export const formatCurrency = num =>
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
   }).format(num);
+
+export const isInRangeInteger = (num, min = 1, max = Infinity) =>
+  Number.isInteger(num) && num >= min && num <= max;
