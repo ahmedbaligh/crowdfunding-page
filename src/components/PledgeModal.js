@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Button, Form, Icon } from 'semantic-ui-react';
+import { Modal, Button, Form } from 'semantic-ui-react';
 
 import { Pledge } from './';
 import '../stylesheets/PledgeModal.scss';
