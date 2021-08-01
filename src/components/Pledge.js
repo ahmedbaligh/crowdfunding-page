@@ -51,29 +51,27 @@ const Pledge = ({
           <span className="checkmark"></span>
         </div>
 
-        <div className="stand-main-info">
-          <div className="stand-header">
-            <label htmlFor={inputID} className="stand-name">
-              {name ?? 'Pledge with no reward'}
-            </label>
+        <div className="stand-header">
+          <label htmlFor={inputID} className="stand-name">
+            {name ?? 'Pledge with no reward'}
+          </label>
 
-            {min && (
-              <p className="pledge-min">Pledge {formatCurrency(min)} or more</p>
-            )}
-          </div>
-
-          {isFinite(left) && (
-            <div className="pledges-left">
-              <span className="left-num">{left} </span>
-              <span className="left-text">left</span>
-            </div>
+          {min && (
+            <p className="pledge-min">Pledge {formatCurrency(min)} or more</p>
           )}
-
-          <p className="stand-info">
-            {info ??
-              'Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.'}
-          </p>
         </div>
+
+        {isFinite(left) && (
+          <div className="pledges-left">
+            <span className="left-num">{left} </span>
+            <span className="left-text">left</span>
+          </div>
+        )}
+
+        <p className="stand-info">
+          {info ??
+            'Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.'}
+        </p>
       </div>
 
       <div className="pledging">
@@ -81,6 +79,7 @@ const Pledge = ({
 
         <Form.Group widths="equal">
           <Form.Input
+            id={`${inputID}-amount`}
             icon="dollar sign"
             iconPosition="left"
             type="number"

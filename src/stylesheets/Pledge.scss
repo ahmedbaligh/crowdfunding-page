@@ -1,24 +1,29 @@
 @use './variables' as *;
 
-$radio-button-size: 26px;
+$radio-button-size: 24px;
 
 .pledge.stand {
   padding: 35px 0 0;
 
   .stand-main {
-    display: flex;
-    gap: 15px;
-    padding: 0 25px;
+    display: grid;
+    grid-template-columns: 30px 1fr 65px;
+    grid-template-areas:
+      'select header left'
+      '.      info   info';
+    padding: 0 28px 12px;
+    gap: 18px;
 
     /* Make a custom radio button
-  * Attribution to W3schools
-  * https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
-  */
+    * Attribution to W3schools
+    * https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+    */
     .stand-select {
+      grid-area: select;
       display: block;
       position: relative;
       padding-left: 35px;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
       font-size: 22px;
       user-select: none;
 
@@ -59,7 +64,7 @@ $radio-button-size: 26px;
         transition: 0.3s linear;
 
         /* Create the indicator (the dot/circle - hidden when not checked) */
-        &:after {
+        &::after {
           content: '';
           position: absolute;
           display: none;
@@ -81,41 +86,42 @@ $radio-button-size: 26px;
       }
     }
 
-    .stand-main-info {
+    .stand-header {
+      grid-area: header;
       display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
+      gap: 1.2rem;
+      justify-content: initial;
 
-      .stand-header {
-        display: flex;
-        gap: 20px;
-
-        .stand-name {
-          font-size: $body-font-size;
-        }
-
-        .pledge-min {
-          line-height: normal;
-        }
+      .stand-name {
+        font-size: $body-font-size;
       }
 
-      .pledges-left {
+      .pledge-min {
+        letter-spacing: 0.03em;
         line-height: normal;
+      }
+    }
 
-        .left-num {
-          font-size: 1.3rem;
-        }
+    .pledges-left {
+      grid-area: left;
+      justify-self: end;
+      line-height: normal;
+      margin-top: -3px;
 
-        .left-text {
-          vertical-align: baseline;
-          padding-left: 3px;
-        }
+      .left-num {
+        font-size: 1.3rem;
       }
 
-      .stand-info {
-        margin: 15px 0 20px;
-        font-size: $body-font-size - 1;
+      .left-text {
+        vertical-align: baseline;
+        padding-left: 3px;
       }
+    }
+
+    .stand-info {
+      grid-area: info;
+      margin: 0 0 15px;
+      font-size: $body-font-size - 1;
     }
   }
 
@@ -124,24 +130,28 @@ $radio-button-size: 26px;
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid $divider-color;
-    padding: 0 20px;
+    padding: 0 2rem;
     visibility: hidden;
     opacity: 0;
     height: 0;
     transition: padding 0.3s ease-out, opacity 0.5s linear;
 
     label {
+      color: $dark-gray;
+      cursor: pointer;
+      font-size: $body-font-size - 1;
     }
 
     .fields {
       margin: 0;
 
       .field {
-        width: 100px;
+        width: 110px;
 
         .ui.input input {
-          border-radius: 20px;
+          border-radius: 50px;
           caret-color: $moderate-cyan;
+          line-height: 2;
 
           /* Chrome, Safari, Edge, Opera */
           &::-webkit-outer-spin-button,
@@ -157,7 +167,8 @@ $radio-button-size: 26px;
         }
 
         .ui.button {
-          line-height: normal;
+          width: inherit;
+          line-height: 2;
         }
       }
     }
@@ -172,7 +183,77 @@ $radio-button-size: 26px;
       height: auto;
       padding-top: 25px;
       padding-bottom: 25px;
-      transition: padding 0.3s ease-in, opacity 0.5s linear;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    padding: 10px 0;
+
+    .stand-main {
+      grid-template-columns: 30px 1fr;
+      grid-template-rows: 70px auto;
+      grid-template-areas:
+        'select header'
+        '.      .     '
+        'info   info  '
+        'left   left  ';
+      padding: 0 22px 13px;
+      gap: 5px 10px;
+      align-items: center;
+
+      .stand-header {
+        gap: 0.5rem;
+
+        .stand-name {
+          font-size: $body-font-size - 2;
+        }
+
+        .pledge-min {
+          letter-spacing: 0;
+        }
+      }
+
+      .pledges-left {
+        justify-self: initial;
+        margin: 20px 0 5px;
+      }
+
+      .stand-info {
+        margin: 0;
+        font-size: $body-font-size - 2;
+      }
+    }
+
+    .pledging {
+      justify-content: center;
+      flex-direction: column;
+      padding: 0 2rem;
+      gap: 20px;
+
+      label {
+        font-size: $body-font-size - 2;
+      }
+
+      .fields.equal.width {
+        flex-wrap: nowrap;
+        gap: 15px;
+
+        & > .field {
+          width: 100px !important;
+          padding: 0;
+
+          .ui.button {
+            width: 110px;
+          }
+        }
+      }
+    }
+
+    &.checked {
+      .pledging {
+        padding-top: 33px;
+        padding-bottom: 0;
+      }
     }
   }
 }

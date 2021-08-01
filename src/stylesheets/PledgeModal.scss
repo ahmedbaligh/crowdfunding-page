@@ -1,12 +1,11 @@
 @use './variables' as *;
 
-.modal.ui {
+.modal.ui:is(.small) {
   border-radius: 8px;
   overflow: hidden;
 
   .modal-wrapper {
-    padding: 3.5rem 3rem;
-    padding-bottom: 0;
+    padding: 3.5rem 3rem 0;
   }
 
   .close.icon {
@@ -19,23 +18,54 @@
     border: none;
 
     .title {
-      font: 700 1.8rem $body-font-family;
+      font: 700 1.72rem $body-font-family;
     }
 
     .description {
       font: 500 $body-font-size $body-font-family;
-      margin: 20px 0;
+      margin: 20px 0 23px;
     }
   }
 
   .content {
     padding-top: 1rem;
-    padding-bottom: 4rem;
+    padding-bottom: 4rem !important;
 
     .form {
       display: flex;
       flex-direction: column;
       gap: 25px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    width: 87%;
+    margin-top: 105px !important;
+
+    .modal-wrapper {
+      padding: 2.2rem 1.8rem 0 !important;
+    }
+
+    .close.icon {
+      top: 1.8rem !important;
+      right: 0.8rem !important;
+    }
+
+    .header {
+      .title {
+        font-size: 1.3rem;
+      }
+
+      .description {
+        font-size: 14px;
+        line-height: 1.7;
+        margin: 25px 0 0px;
+      }
+    }
+
+    .content {
+      padding-top: 1.7rem !important;
+      padding-bottom: 2.2rem !important;
     }
   }
 }
