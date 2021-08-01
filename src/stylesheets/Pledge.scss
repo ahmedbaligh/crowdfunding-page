@@ -93,6 +93,7 @@ $radio-button-size: 24px;
       justify-content: initial;
 
       .stand-name {
+        cursor: pointer;
         font-size: $body-font-size;
       }
 
@@ -140,6 +141,7 @@ $radio-button-size: 24px;
       color: $dark-gray;
       cursor: pointer;
       font-size: $body-font-size - 1;
+      user-select: none;
     }
 
     .fields {
@@ -183,6 +185,14 @@ $radio-button-size: 24px;
       height: auto;
       padding-top: 25px;
       padding-bottom: 25px;
+    }
+  }
+
+  &.inactive {
+    .stand-header {
+      .stand-name {
+        cursor: not-allowed;
+      }
     }
   }
 

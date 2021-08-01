@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Button, Form } from 'semantic-ui-react';
+import { Modal, Button, Form, Icon } from 'semantic-ui-react';
 
 import { Pledge } from './';
 import '../stylesheets/PledgeModal.scss';
+import { checkIcon } from '../assets';
 
 const BackProject = ({
   firstOpen,
@@ -70,21 +71,22 @@ const BackProject = ({
         </Modal.Content>
       </Modal>
 
-      <Modal
-        onClose={() => setSecondOpen(false)}
-        open={secondOpen}
-        size="small"
-      >
-        <Modal.Header>Modal #2</Modal.Header>
+      <Modal onClose={() => setSecondOpen(false)} open={secondOpen} size="tiny">
+        <Modal.Header>
+          <img src={checkIcon} alt="" />
+          <p>Thanks for your support!</p>
+        </Modal.Header>
+
         <Modal.Content>
-          <p>That's everything!</p>
+          <p>
+            Your pledge brings us one step closer to sharing Mastercraft Bamboo
+            Monitor Riser worldwide. You will get an email once our campaign is
+            completed.
+          </p>
         </Modal.Content>
+
         <Modal.Actions>
-          <Button
-            icon="check"
-            content="All Done"
-            onClick={() => setSecondOpen(false)}
-          />
+          <Button onClick={() => setSecondOpen(false)}>Got it!</Button>
         </Modal.Actions>
       </Modal>
     </>

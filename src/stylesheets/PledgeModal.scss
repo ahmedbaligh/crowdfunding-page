@@ -69,3 +69,66 @@
     }
   }
 }
+
+.modal.ui.tiny {
+  border-radius: 8px;
+  padding: 50px 0;
+  text-align: center;
+
+  & > * {
+    padding: 0 !important;
+  }
+
+  .header {
+    border: none;
+
+    img {
+      width: clamp(66px, 6.25vw, 100px);
+      margin-bottom: 35px;
+    }
+
+    p {
+      font-family: inherit;
+      font-size: clamp(19px, 1.7vw, 1.8rem);
+      font-weight: 700;
+      color: $black;
+    }
+  }
+
+  .content {
+    width: min(90%, 440px);
+    margin: 10px auto 35px;
+
+    p {
+      font-family: inherit;
+      font-size: min(3.7vw, 1.15rem);
+      font-size: clamp(14px, 1.11vw, 1.2rem);
+    }
+  }
+
+  .actions {
+    border: none;
+    text-align: center;
+
+    button {
+      width: 110px;
+      line-height: 2;
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding: 30px 0 40px;
+    width: 87%;
+
+    .header {
+      img {
+        margin-bottom: 15px;
+      }
+    }
+
+    .content {
+      margin: 18px auto 27px;
+    }
+  }
+}

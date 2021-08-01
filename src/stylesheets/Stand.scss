@@ -16,6 +16,7 @@
 
   .stand-name {
     font: 700 1.3rem $body-font-family;
+    cursor: inherit;
   }
 
   .pledge-min {
@@ -57,6 +58,7 @@
 
   &.inactive {
     opacity: 0.5;
+    cursor: not-allowed;
 
     .stand-actions {
       .select-button {
