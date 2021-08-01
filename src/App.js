@@ -13,8 +13,6 @@ const App = () => {
 
   useEffect(() => {
     sessionStorage.setItem('crowdfundData', JSON.stringify(data));
-    console.log(data);
-    // console.table(data);
   }, [data]);
 
   const onBookmark = () =>
@@ -23,7 +21,8 @@ const App = () => {
   const onPledge = (amount, index) =>
     setData(prev => {
       const stands = prev.stands;
-      --stands[index].left;
+
+      if (index > -1) --stands[index].left;
 
       return {
         ...prev,
